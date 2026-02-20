@@ -1,45 +1,33 @@
-export interface Listing {
-  id: string;
-  landlord_id: string;
-  title: string;
-  description: string;
-  address: string;
-  rent_xlm: number;
-  bedrooms: number;
-  bathrooms: number;
-  furnished?: boolean;
-  pet_friendly?: boolean;
-  latitude?: number;
-  longitude?: number;
-  status: "active" | "inactive" | "deleted";
-  created_at: string;
-  updated_at: string;
-}
+/**
+ * @file db/types.ts
+ * @description Re-exports from the canonical type definitions in `@/lib/types`.
+ *
+ * All database model types now live in `@/lib/types/database.ts`.
+ * API request/response types live in `@/lib/types/api.ts`.
+ *
+ * This file re-exports those types so that existing imports from
+ * `@/lib/db/types` continue to work without modification.
+ *
+ * Prefer importing directly from `@/lib/types` in new code.
+ */
 
-export interface ListingAmenity {
-  listing_id: string;
-  amenity: string;
-}
+export type {
+  // Database models
+  Listing,
+  ListingRow,
+  ListingInsert,
+  ListingUpdate,
+  ListingAmenity,
+  ListingAmenityRow,
+  ListingAmenityInsert,
+  ListingWithLandlord,
+  ListingWithAmenities,
+  ListingDetail,
+  ListingStatus,
+} from '@/lib/types/database'
 
-export interface ListingSearchParams {
-  minPrice?: number;
-  maxPrice?: number;
-  location?: string;
-  radius?: string; // e.g., "5km"
-  bedrooms?: number;
-  bathrooms?: number;
-  amenities?: string[]; // comma-separated or array
-  search?: string; // full-text search query
-  sortBy?: "price" | "created_at" | "bedrooms" | "bathrooms";
-  order?: "asc" | "desc";
-  page?: number;
-  limit?: number;
-}
-
-export interface ListingSearchResult {
-  listings: Listing[];
-  total: number;
-  page: number;
-  limit: number;
-  totalPages: number;
-}
+export type {
+  // Search / API types
+  ListingSearchParams,
+  ListingSearchResult,
+} from '@/lib/types/api'
