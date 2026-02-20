@@ -1,10 +1,10 @@
-import { createClient } from "@/lib/superbase/server";
+import { createClient } from "@/lib/supabase/server";
 import type {
   ListingWithLandlord,
   MessageWithSender,
   PaymentRecord,
   RentAgreement,
-} from "@/lib/types/superbase";
+} from "@/lib/types/supabase";
 
 // ── Listings ─────────────────────────────────────────────
 

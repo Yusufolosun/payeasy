@@ -14,6 +14,11 @@ export interface Listing {
   status: "active" | "inactive" | "deleted";
   created_at: string;
   updated_at: string;
+  images?: string[];
+  landlord?: {
+    username: string | null;
+    avatar_url: string | null;
+  };
 }
 
 export interface ListingAmenity {
@@ -30,6 +35,7 @@ export interface ListingSearchParams {
   bathrooms?: number;
   amenities?: string[]; // comma-separated or array
   search?: string; // full-text search query
+  bbox?: string; // e.g., "west,south,east,north"
   sortBy?: "price" | "created_at" | "bedrooms" | "bathrooms";
   order?: "asc" | "desc";
   page?: number;

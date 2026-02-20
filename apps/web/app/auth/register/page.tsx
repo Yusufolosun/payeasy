@@ -8,7 +8,7 @@ import { setAllowed, getPublicKey } from '@stellar/freighter-api';
 import { Wallet, ArrowLeftCircle } from 'lucide-react';
 import Link from 'next/link';
 
-import { createClient } from '@/lib/supabaseClient';
+import { createClient } from '@/lib/supabase/client';
 import { registerSchema, RegisterFormData } from '@/lib/validators/auth';
 import AuthInput from '@/components/forms/AuthInput';
 import AuthButton from '@/components/forms/AuthButton';
