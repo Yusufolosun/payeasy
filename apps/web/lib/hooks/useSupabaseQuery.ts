@@ -133,3 +133,4 @@ export function useSupabaseDelete(table: string) {
   return { delete: delete_, loading, error }
 }
 }
+}

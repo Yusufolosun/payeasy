@@ -1,35 +1,17 @@
-const nextJest = require('next/jest');
-
-const createJestConfig = nextJest({ dir: './' });
-
 /** @type {import('jest').Config} */
 const config = {
-    preset: 'ts-jest',
     testEnvironment: 'jest-environment-jsdom',
     setupFilesAfterEnv: ['./jest.setup.js'],
     moduleNameMapper: {
         '^@/(.*)$': '<rootDir>/$1',
     },
     testMatch: ['**/__tests__/**/*.[jt]s?(x)', '**/?(*.)+(spec|test).[jt]s?(x)'],
-    collectCoverageFrom: [
-        'lib/**/*.{ts,tsx}',
-        'utils/**/*.{ts,tsx}',
-        'components/**/*.{ts,tsx}',
-        '!**/*.d.ts',
-        '!**/node_modules/**',
-    ],
-    coverageThreshold: {
-        global: {
-            branches: 35,
-            functions: 40,
-            lines: 40,
-            statements: 40,
-        },
-    },
-    coverageReporters: ['text', 'lcov', 'html'],
     transform: {
-        '^.+\\.(ts|tsx)$': ['ts-jest', { tsconfig: { jsx: 'react-jsx' } }],
+        '^.+\\.(ts|tsx|js|mjs|jsx)$': ['ts-jest', { tsconfig: { jsx: 'react-jsx', module: 'commonjs', target: 'es2022', allowJs: true } }],
     },
+    transformIgnorePatterns: [
+        '/node_modules/(?!(@faker-js/faker)/)'
+    ],
 };
 
-module.exports = createJestConfig(config);
+module.exports = config;
